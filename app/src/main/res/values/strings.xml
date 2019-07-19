@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Currency exchange</string>
+    <string name="titleBtc">BTC</string>
+    <string name="countBtc">0</string>
+    <string name="titleUsd">USD</string>
+    <string name="countUsd">0</string>
+    <string name="titleGbp">GBP</string>
+    <string name="countGbp">0</string>
+    <string name="titleEur">EUR</string>
+    <string name="countEur">0</string>
+    <string name="buttonTitle">Обновить курс</string>
+</resources>
