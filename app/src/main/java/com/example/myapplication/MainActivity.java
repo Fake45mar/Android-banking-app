@@ -13,11 +13,8 @@ import java.util.Map;
 
 public class MainActivity extends Activity {
     protected Map<String, String> counts = new HashMap<>();
-    private requestBtc req = new requestBtc("Requesting currency");
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState){
-        req.start();
-        req.run();
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                 | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
@@ -35,6 +32,8 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
                 try {
+                    requestBtc req = new requestBtc("Requesting currency");
+                    req.start();
                     btc.setText(counts.get("BTC"));
                     usd.setText(counts.get("USD"));
                     eur.setText(counts.get("EUR"));
@@ -42,7 +41,6 @@ public class MainActivity extends Activity {
                 }
                 catch(Exception e){
                     System.out.println(e + "ERROR414");
-                    req.interrupt();
                 }
             }
         });
@@ -77,6 +75,7 @@ public class MainActivity extends Activity {
                     t.start();
                 }
                 catch(Exception e){
+                    t.interrupt();
                     e.printStackTrace();
                 }
             }
