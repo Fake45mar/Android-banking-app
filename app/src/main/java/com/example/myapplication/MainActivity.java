@@ -6,13 +6,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class MainActivity extends Activity {
     protected Map<String, String> counts = new HashMap<>();
+    requestBtc req = new requestBtc("Requesting currency");
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -23,6 +29,7 @@ public class MainActivity extends Activity {
                 | View.SYSTEM_UI_FLAG_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         setContentView(R.layout.main);
+        req.start();
         final TextView btc = (TextView) findViewById(R.id.courseBtc);
         final TextView usd = (TextView) findViewById(R.id.courseUsd);
         final TextView eur = (TextView) findViewById(R.id.courseEur);
@@ -75,7 +82,6 @@ public class MainActivity extends Activity {
                     t.start();
                 }
                 catch(Exception e){
-                    t.interrupt();
                     e.printStackTrace();
                 }
             }
